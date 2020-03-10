@@ -1,5 +1,6 @@
 <template>
   <div class="home-page">
+    <div class="banner"></div>
     <div class="main-title">中视前卫资讯研究室 数据可视化分析</div>
     <div class="date-wrap">
       {{data.timeStamp | timeFilter}}
@@ -8,7 +9,7 @@
       <div class="title-wrap">
         <div>主题：{{item['主题']}}</div>
       </div>      
-      <collapse :data="item['媒体']"></collapse>
+      <collapse :data="item['媒体']" :id="index"></collapse>
     </div>
   </div>
 </template>
@@ -41,6 +42,11 @@ export default {
 <style rel="stylesheet/scss" lang="scss" scoped>
 .home-page {
   width: 100%;
+}
+.banner {
+  height: 225px;
+  width: 100%;
+  background: url(../../../static/cctv_banner.jpg) no-repeat 50% 0;
 }
 .main-title {
   font-size: 38px;

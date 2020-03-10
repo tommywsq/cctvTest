@@ -8,7 +8,7 @@
     <div v-show="display">
       <div v-for="(item, index) in data" :key="index" class="collapse-item">
         <div class="collapse-item-title">
-          <div class="collapse-item-title-name" >媒体名称：{{item['名称']}}</div>
+          <div class="collapse-item-title-name">媒体名称：{{item['名称']}}</div>
           <div>报道量：{{item['报道量']}}</div>
         </div>
 
@@ -22,12 +22,17 @@
 </template>
 
 <script>
+import bus from "../../../utils/eventBus";
 export default {
   components: {},
   props: {
     data: {
       default: [],
       required: false
+    },
+    id: {
+      required: false,
+      default: null
     }
   },
   data() {
@@ -35,10 +40,20 @@ export default {
       display: false
     };
   },
-  mounted() {},
+  mounted() {
+    bus.$on("checkDisplay", target => {
+      if (target === this.id) {
+        this.display = !this.display
+      }
+      else {
+        this.display = false
+      }
+    });
+  },
   methods: {
     chekcDetail() {
-      this.display = !this.display;
+      bus.$emit("checkDisplay", this.id);
+
     }
   },
   filters: {
