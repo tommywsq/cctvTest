@@ -4,18 +4,23 @@
     <div class="date-wrap">
       {{data.timeStamp | timeFilter}}
     </div>
-    <div v-for="(item, index) in data.result" :key="index" class="title-wrap">
-      <div class="title">主题：{{item['主题']}}</div>
-      <div class="detail">查看详情 ></div>
+    <div v-for="(item, index) in data.result" :key="index">
+      <div class="title-wrap">
+        <div>主题：{{item['主题']}}</div>
+      </div>      
+      <collapse :data="item['媒体']"></collapse>
     </div>
   </div>
 </template>
 
 <script>
 import { data } from "./data/data";
+import collapse from "./components/collapse";
 
 export default {
-  components: {},
+  components: {
+    collapse
+  },
   data() {
     return {
       data: []
@@ -47,9 +52,10 @@ export default {
 .title-wrap {
   display: flex;
   height: 30px;
-  width: 400px;
+  width: 880px;
   align-items: center;
   justify-content: space-between;
+  font-size: 16px;
 }
 .date-wrap {
   height: 65px;
