@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-// import 'amfe-flexible'
-// import VueBus from 'vue-bus'
+import echarts from 'echarts'
 import Router from 'vue-router'
-// import './permission'
 
 Vue.config.productionTip = false
-// Vue.use(VueBus)
 
 const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {

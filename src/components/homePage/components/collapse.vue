@@ -1,10 +1,5 @@
 <template>
   <div class="collapse-wrap">
-    <div class="detail" @click="chekcDetail">
-      <div class="detail-content">查看详情</div>
-      <div :class="{'show-content': !dispaly, 'hide-content': display}">></div>
-    </div>
-
     <div v-show="display">
       <div v-for="(item, index) in data" :key="index" class="collapse-item">
         <div class="collapse-item-title">
@@ -27,7 +22,7 @@ export default {
   components: {},
   props: {
     data: {
-      default: [],
+      default: () => [],
       required: false
     },
     id: {
@@ -43,45 +38,26 @@ export default {
   mounted() {
     bus.$on("checkDisplay", target => {
       if (target === this.id) {
-        this.display = !this.display
-      }
-      else {
-        this.display = false
+        this.display = !this.display;
+      } else {
+        this.display = false;
       }
     });
   },
-  methods: {
-    chekcDetail() {
-      bus.$emit("checkDisplay", this.id);
-
-    }
-  },
+  methods: {},
   filters: {
     timeFilter(item) {
-      return item.split("+")[0];
+      if (typeof item === 'undefined') {
+        return item;
+      } else {
+        return item.split("+")[0];
+      }
     }
   }
 };
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.detail {
-  cursor: pointer;
-  color: #1f3b7b;
-  margin-top: -35px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-.detail:active {
-  color: #6079b2;
-}
-.detail:hover {
-  color: #8d0000;
-}
-.detail-content {
-  margin-right: 5px;
-}
 .hide-content {
   transform: rotate(90deg);
 }
