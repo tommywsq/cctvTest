@@ -1,8 +1,10 @@
 <template>
   <div id="app" style="height: 100%;">
+    <div class="main-wrap">
 
-    <div>
-      <router-view></router-view>
+      <div class="main-wrap">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -10,23 +12,22 @@
 <script>
 export default {
   name: "app",
-  components: {
-
-  },
-  mounted() {
-
-  },
+  components: {},
+  mounted() {},
   data() {
-    return {
-
-    };
+    return {};
   },
-  methods: {
-
-  }
+  methods: {}
 };
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+#app {
+  display: flex;
+  justify-content: center;
+}
+.main-wrap {
+  width: 880px;
+}
 
 </style>
