@@ -19,7 +19,13 @@
 
 ```
 项目截图
+![image](https://github.com/tommywsq/cctvTest/blob/master/images/1.png) 
 
+![image](https://github.com/tommywsq/cctvTest/blob/master/images/2.png)
+
+![image](https://github.com/tommywsq/cctvTest/blob/master/images/3.png)
+
+![image](https://github.com/tommywsq/cctvTest/blob/master/images/4.png)
 
 
 
